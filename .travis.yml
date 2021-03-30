@@ -1,6 +1,7 @@
 language: python
 branches:
-        - /.*/
+        only:
+                - .*
 script:
         - python h.py 
 
