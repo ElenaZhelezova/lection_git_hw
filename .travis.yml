@@ -1,0 +1,3 @@
+language: python
+script:
+        print("Hello world")
