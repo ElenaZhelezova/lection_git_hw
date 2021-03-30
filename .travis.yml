@@ -1,4 +1,6 @@
 language: python
+branches:
+        - /.*/
 script:
         - python h.py 
 
