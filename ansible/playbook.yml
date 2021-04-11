@@ -1,0 +1,76 @@
+---
+
+- name: ansible hw playbook
+  hosts: all
+  become: yes
+
+  vars:
+    ansible_ssh_private_key_file: /home/ans_user/.ssh/ansible_ssh
+    mysql_password: 'LModjFD/l5!qq'
+    mysql_user_password: LLModjFD/l5!qq
+
+  tasks:
+  - name: updates all packages
+    yum:
+      name: '*'
+      state: latest
+
+  - name: install NTP
+    yum:
+      name:
+        - ntp
+      state: latest
+
+  - name: install nginx
+    yum:
+      name: http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+      state: present
+
+  - name: Install MySQL 5.7 repo
+    yum: name=http://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm state=present
+
+  - name: Install MySQL 5.7
+    yum:
+      name: [mysql-community-server, mysql-community-client, MySQL-python]
+
+  - name: remove my.cnf
+    ansible.builtin.file:
+      path: /root/.my.cnf
+      state: absent
+
+  - name: Start the MySQL service
+    service: name=mysqld state=started enabled=true
+
+  - name: Change mysql root password and keep track in
+    shell: "grep 'A temporary password is generated for root@localhost' /var/log/mysqld.log | awk -F ' ' '{print $(NF)}'"
+    register: root_password
+
+  - name: update expired root user password
+    command: mysql -uroot -p'{{ root_password.stdout_lines[-1] }}' --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '{{ mysql_password }}';"
+
+  - name: copy my.cnf
+    ansible.builtin.copy:
+      src: /home/ans_user/my.cnf
+      dest: /root/.my.cnf
+
+  - name: replace default ntp config
+    ansible.builtin.copy:
+      src: /home/ans_user/ntp.conf
+      dest: /etc/ntp.conf
+      owner: root
+      group: root
+      mode: '0644'
+
+  - name: create mysql database
+    community.mysql.mysql_db:
+      name: database1
+      state: present
+
+  - name: create mysql user
+    community.mysql.mysql_user:
+      name: mysql_user
+      password: '*75B422C233819128319E3518960CC7A50C8E72DB'
+      encrypted: yes
+      priv:
+        'database1.*': 'ALL'
+      state: present
