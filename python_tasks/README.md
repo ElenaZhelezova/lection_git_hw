@@ -155,9 +155,9 @@ argument is not a number
 You have had AWK homework (3-4), please find a document in a homework Slack
 thread. Do all the same AWK tasks using Python.
 
-#####* What is the most frequent browser (user agent)?
-#####* Show number of requests per month for ip 95.108.129.196 
-#####* Show total amount of data which server has provided for each unique ip
+##### * What is the most frequent browser (user agent)?
+##### * Show number of requests per month for ip 95.108.129.196 
+##### * Show total amount of data which server has provided for each unique ip
 ```
 >>> python3 awk_puzzles.py --log_file access.log --ip 193.106.31.130
 ...
