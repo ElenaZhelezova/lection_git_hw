@@ -10,7 +10,7 @@ enter comma-separated numbers: 55, 6,7, 99,100
 (55, 6, 7, 99, 100)
 ```
 
-###Task 2
+### Task 2
 Develop a procedure to print all even numbers from a numbers list which is given
 as an argument. Keep the original order of numbers in list and stop printing if
 a number 254 was met. Don't forget to add a check of the passed argument type.
@@ -48,7 +48,7 @@ a number 254 was met. Don't forget to add a check of the passed argument type.
 ```
 
 
-###Task 3
+### Task 3
 Something old in a new way :). Self-study positional arguments for Python scripts
 (sys.argv). Write a script that takes a list of words (or even phrases)aScript
 should ask a user to write something to stdin until user won't provide one of
@@ -65,7 +65,7 @@ Bye
 ```
 
 
-###Task 4
+### Task 4
 We took a little look on os module. Write a small script which will print a
 string using all the types of string formatting which were considered during the
 lecture with the following context: This script has the following PID:
@@ -80,7 +80,7 @@ This script has the following PID: 455048. It was ran by elena to work happily o
 ```
 
 
-###Task 5
+### Task 5
 Develop a function that takes a list of integers (by idea not in fact) as an
 argument and returns list of top-three max integers. If passed list contains
 not just integers collect them and print the following error message: You've
@@ -110,7 +110,7 @@ you've passed some extra elements that I can't parse: ['fhfhfh', 'hh']
 [66, 55]
 ```
 
-###Task 6
+### Task 6
 Create a function that will take a string as an argument and return a dictionary
 where keys are symbols from the string and values are the count of inclusion of
 that symbol.
@@ -122,7 +122,7 @@ that symbol.
 {'a': 5, 'b': 2, 'r': 2, 'c': 1, 'd': 1}
 ```
 
-###Task 7
+### Task 7
 Develop a procedure that will have a size argument and print a table where num
 of columns and rows will be of this size. Cells of table should contain numbers
 from 1 to n ** 2 placed in a spiral fashion. Spiral should start from top left
@@ -151,7 +151,7 @@ argument is not a number
 13 12 11 10 9 
 ```
 
-###Task 8*
+### Task 8*
 You have had AWK homework (3-4), please find a document in a homework Slack
 thread. Do all the same AWK tasks using Python.
 
